@@ -1,0 +1,34 @@
+presets:
+  tv-shows:
+    exists_series:
+      path: /srv/torrents
+      allow_different_qualities: better
+    series:
+      settings:
+        720p:
+          timeframe: 08 hours
+      hdtv:
+        - Show Name 1
+      720p:
+        - Show Name 2
+    transmission:
+      username: transmission
+      password: *****
+
+tasks:
+  eztv:
+    rss: http://ezrss.it/feed/
+    preset: tv-shows
+    
+  btchat-eztv:  
+    rss: http://rss.bt-chat.com/?group=3
+    preset: tv-shows
+
+  btchat-vtv:
+    rss: http://rss.bt-chat.com/?group=2
+    preset: tv-shows
+
+  dailytvtorrents.org:
+    rss: http://www.dailytvtorrents.org/rss/combined/ebe18a541bb80ab31de4c5b6688a440419836560bf90defb
+    preset: tv-shows
+
