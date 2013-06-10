@@ -5,12 +5,12 @@ openjdk-6-jre:
 subsonic-deb:
   cmd.run:
     - names: 
-      - dpkg -i /tmp/subsonic-4.8.deb
+      - dpkg -i /tmp/subsonic.deb
     - unless: dpkg -s subsonic
     - require: 
-      - file: /tmp/subsonic-4.8.deb
+      - file: /tmp/subsonic.deb
 
-/tmp/subsonic-4.8.deb:
+/tmp/subsonic.deb:
   file.managed:
     - source: salt://subsonic/subsonic-4.8.deb
 
