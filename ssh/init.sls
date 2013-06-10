@@ -33,6 +33,10 @@ torrent-container:
   host.present:
     - ip: 10.0.3.77  
 
+subsonic-container:
+  host.present:
+    - ip: 10.0.3.76
+
 zotac-server:
   host.present:
     - ip: 10.0.3.1
