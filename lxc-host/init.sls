@@ -63,3 +63,17 @@ apt-cacher:
     - require:
       - file: /media/wd500
       - file: /media/samsung1tera
+
+
+
+rsnapshot:
+  pkg:
+    - installed
+
+/etc/rsnapshot.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/rsnapshot.conf
+    - require:
+      - pkg: rsnapshot
