@@ -62,3 +62,6 @@ iptables-reload:
     - user: root
     - group: root
     - source: salt://lxc-host/fstab
+    - require:
+      - file: /media/wd500
+      - file: /media/samsung1tera
