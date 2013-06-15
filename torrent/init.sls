@@ -62,3 +62,15 @@ flexget:
     - require:
       - pip: flexget
 
+mencoder:
+  pkg:
+    - installed
+
+/usr/local/bin/encodear.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://torrent/encodear.sh
+    - require:
+      - pkg: mencoder

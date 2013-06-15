@@ -11,6 +11,7 @@ base:
     - ssh
     - users
     - apt
+    - base
 
   'zotac-server':
     - lxc-host
