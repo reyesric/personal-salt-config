@@ -45,3 +45,20 @@ iptables-reload:
     - watch:
       - file: /etc/iptables.rules
 
+
+
+/media/wd500:
+  file.directory:
+    - user: root
+    - group: root
+    
+/media/samsung1tera:
+  file.directory:
+    - user: root
+    - group: root
+
+/etc/fstab:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/fstab
