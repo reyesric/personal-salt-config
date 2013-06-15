@@ -20,9 +20,16 @@ subsonic-deb:
     - user: root
     - group: root
 
+/var/music:
+  file.directory:
+    - user: root
+
 subsonic:
   service:
    - running
    - watch:
      - cmd: subsonic-deb
      - file: /etc/default/subsonic
+     - file: /var/music
+
+
