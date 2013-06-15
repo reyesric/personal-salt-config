@@ -38,11 +38,9 @@ apt-cacher:
     - mode: 600
 
 
-iptables-reload:
+/etc/init.d/iptables-persistent reload:
   cmd.run:
-    - names:
-      - /etc/init.d/iptables-persistent reload
-    - watch:
+    - watch: 
       - file: /etc/iptables.rules
 
 
