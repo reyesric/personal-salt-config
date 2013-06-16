@@ -30,7 +30,7 @@ apt-cacher:
   pkg:
     - installed
 
-/etc/iptables.rules:
+/etc/iptables/rules.v4:
   file.managed:
     - user: root
     - group: root
@@ -41,7 +41,7 @@ apt-cacher:
 /etc/init.d/iptables-persistent reload:
   cmd.run:
     - watch: 
-      - file: /etc/iptables.rules
+      - file: /etc/iptables/rules.v4
 
 
 
@@ -75,5 +75,13 @@ rsnapshot:
     - user: root
     - group: root
     - source: salt://lxc-host/rsnapshot.conf
+    - require:
+      - pkg: rsnapshot
+
+/etc/cron.d/rsnapshot:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/rsnapshot.cron.d
     - require:
       - pkg: rsnapshot
