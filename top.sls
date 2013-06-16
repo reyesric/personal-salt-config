@@ -19,3 +19,6 @@ base:
  
   'subsonic*':
     - subsonic
+
+  'seafile*':
+    - seafile

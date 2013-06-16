@@ -4,7 +4,8 @@
 :INPUT ACCEPT [110:6601]
 :OUTPUT ACCEPT [67:5399]
 :POSTROUTING ACCEPT [64:4929]
-[0:0] -A PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 10.0.3.150:80
+[0:0] -A PREROUTING -p tcp -m tcp --dport 80 -j DNAT --to-destination 10.0.3.150:80
+[0:0] -A PREROUTING -p tcp -m tcp --dport 8000 -j DNAT --to-destination 10.0.3.46:8000
 [0:0] -A PREROUTING -p tcp -m tcp --dport 9091 -j DNAT --to-destination 10.0.3.77:9091
 [0:0] -A PREROUTING -p tcp -m tcp --dport 9092 -j DNAT --to-destination 10.0.3.77:9091
 [0:0] -A PREROUTING -p tcp -m tcp --dport 9092 -j DNAT --to-destination 10.0.3.77:9091
@@ -55,7 +56,8 @@ COMMIT
 :INPUT ACCEPT [978:78278]
 :FORWARD ACCEPT [16934:9577452]
 :OUTPUT ACCEPT [1174:460340]
-[0:0] -A INPUT -i eth0 -p tcp -m tcp --dport 8080 -m state --state NEW,ESTABLISHED -j ACCEPT
+[0:0] -A INPUT -i eth0 -p tcp -m tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+[0:0] -A INPUT -i eth0 -p tcp -m tcp --dport 8000 -m state --state NEW,ESTABLISHED -j ACCEPT
 [0:0] -A INPUT -i eth0 -p tcp -m tcp --dport 9091 -m state --state NEW,ESTABLISHED -j ACCEPT
 [0:0] -A INPUT -i virbr0 -p udp -m udp --dport 53 -j ACCEPT
 [0:0] -A INPUT -i virbr0 -p tcp -m tcp --dport 53 -j ACCEPT

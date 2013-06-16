@@ -44,3 +44,7 @@ zotac-server:
       - zotac-server
       - reyesric.homeftp.org
 
+seafile-container:
+  host.present:
+    - ip: 10.0.3.46
+
