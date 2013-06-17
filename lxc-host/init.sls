@@ -30,21 +30,6 @@ apt-cacher:
   pkg:
     - installed
 
-/etc/iptables/rules.v4:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://lxc-host/iptables.rules
-    - mode: 600
-
-
-/etc/init.d/iptables-persistent reload:
-  cmd.run:
-    - watch: 
-      - file: /etc/iptables/rules.v4
-
-
-
 /media/wd500:
   file.directory:
     - user: root
