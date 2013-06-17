@@ -14,6 +14,11 @@ ddclient:
   pkg:
     - installed
 
+smartmontools:
+  pkg:
+    - installed
+
+
 /etc/ddclient.conf:
   file.managed:
     - user: root

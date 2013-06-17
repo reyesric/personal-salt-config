@@ -4,6 +4,7 @@ base:
     - postfix
 
   'torrent*':
+    - pip
     - torrent
     - postfix
   
@@ -16,6 +17,8 @@ base:
   'zotac-server':
     - lxc-host
     - minidlna
+    - pip
+    - diamond
  
   'subsonic*':
     - subsonic

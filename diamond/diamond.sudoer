@@ -1,0 +1,2 @@
+diamond ALL=NOPASSWD: /usr/sbin/smartctl
+

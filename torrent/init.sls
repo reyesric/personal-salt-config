@@ -1,3 +1,6 @@
+include:
+  - pip
+
 transmission-daemon:
   pkg:
     - installed
@@ -30,10 +33,6 @@ python-transmissionrpc:
     - user: debian-transmission
     - require:
       - file: /srv/torrents
-
-python-pip:
-  pkg:
-    - installed
 
 flexget:
   pip.installed:
