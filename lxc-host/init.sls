@@ -75,3 +75,23 @@ rsnapshot:
     - source: salt://lxc-host/rsnapshot.cron.d
     - require:
       - pkg: rsnapshot
+
+
+/var/lib/lxc/torrent-container/fstab:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/torrent-container.fstab
+
+/var/lib/lxc/web-container/fstab:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/web-container.fstab
+
+/var/lib/lxc/subsonic-container/fstab:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/subsonic-container.fstab
+
