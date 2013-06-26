@@ -1,0 +1,5 @@
+proc            proc         proc    nodev,noexec,nosuid 0 0
+sysfs           sys          sysfs defaults  0 0
+/srv/salt /var/lib/lxc/torrent-container/rootfs/srv/salt none bind 0 0
+/srv/pillar /var/lib/lxc/torrent-container/rootfs/srv/pillar none bind 0 0
+/shared/torrents /var/lib/lxc/torrent-container/rootfs/srv/torrents none bind 0 0
