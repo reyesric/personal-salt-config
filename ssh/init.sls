@@ -25,17 +25,11 @@ ssh:
      - require:
        - pkg: openssh-server
 
-web-container:
+{% for container, ipaddr in pillar.get('containers', {}).items() %}
+{{container}}-container:
   host.present:
-    - ip: 10.0.3.150
-
-torrent-container:
-  host.present:
-    - ip: 10.0.3.77  
-
-subsonic-container:
-  host.present:
-    - ip: 10.0.3.76
+    - ip: {{ipaddr}}
+{% endfor %}
 
 zotac-server:
   host.present:
@@ -44,7 +38,4 @@ zotac-server:
       - zotac-server
       - reyesric.homeftp.org
 
-seafile-container:
-  host.present:
-    - ip: 10.0.3.46
 

@@ -54,6 +54,13 @@ apt-cacher:
       - file: /media/wd500
       - file: /media/samsung1tera
 
+/etc/resolv.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/resolv.conf
+    - require:
+      - pkg: lxc
 
 
 rsnapshot:
@@ -77,21 +84,23 @@ rsnapshot:
       - pkg: rsnapshot
 
 
-/var/lib/lxc/torrent-container/fstab:
+
+{% for container, ipaddr in pillar.get('containers_ipaddrs', {}).items() %}
+
+/var/lib/lxc/{{container}}-container/fstab:
   file.managed:
     - user: root
     - group: root
-    - source: salt://lxc-host/torrent-container.fstab
+    - source: salt://lxc-host/{{container}}-container.fstab
 
-/var/lib/lxc/web-container/fstab:
+/var/lib/lxc/{{container}}-container/config:
   file.managed:
     - user: root
     - group: root
-    - source: salt://lxc-host/web-container.fstab
+    - container: {{container}}
+    - ipaddr: {{ipaddr}}
+    - macaddr: {{ pillar['containers_macaddrs'][container] }}
+    - source: salt://lxc-host/lxc-config.jinja
+    - template: jinja
 
-/var/lib/lxc/subsonic-container/fstab:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://lxc-host/subsonic-container.fstab
-
+{% endfor %}
