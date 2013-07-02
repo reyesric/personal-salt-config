@@ -104,3 +104,37 @@ rsnapshot:
     - template: jinja
 
 {% endfor %}
+
+include:
+  - users
+  - pip
+
+flask:
+  pip.installed:
+    - require:
+      - pkg: python-pip
+
+https://github.com/lxc-webpanel/LXC-Web-Panel.git:
+  git.latest:
+    - rev: master
+    - target: /srv/lwp
+    - require:
+      - pkg: git-core
+      - pip: flask
+
+/etc/init.d/lwp:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/lwp.init.d
+    - mode: 700
+    - require:
+      - git: https://github.com/lxc-webpanel/LXC-Web-Panel.git
+
+lwp:
+  service:
+    - running
+    - enable: True
+    - sig: lwp
+    - require:
+      - file: /etc/init.d/lwp
