@@ -1,18 +1,17 @@
 base:
   'web-container':
     - webserver
-    - postfix
 
   'torrent*':
     - pip
     - torrent
-    - postfix
   
   '*':
     - ssh
     - users
     - apt
     - base
+    - postfix
 
   'zotac-server':
     - lxc-host
