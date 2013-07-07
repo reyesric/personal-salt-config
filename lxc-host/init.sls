@@ -85,23 +85,61 @@ rsnapshot:
 
 
 
-{% for container, ipaddr in pillar.get('containers_ipaddrs', {}).items() %}
+{% for container in pillar['containers'] %}
+
+create_container_{{container}}:
+  cmd.run:
+    - name: lxc-create -n {{container}}-container -t ubuntu
+    - unless: stat /var/lib/lxc/{{container}}-container/rootfs
+
+/var/lib/lxc/{{container}}-container/rootfs/srv:
+  file.directory:
+    - user: root
+    - group: root
+    - require:
+      - cmd: create_container_{{container}}
+
+/var/lib/lxc/{{container}}-container/rootfs/srv/pillar:
+  file.directory:
+    - user: root
+    - group: root
+    - require:
+      - cmd: create_container_{{container}}
+
+/var/lib/lxc/{{container}}-container/rootfs/srv/salt:
+  file.directory:
+    - user: root
+    - group: root
+    - require:
+      - cmd: create_container_{{container}}
 
 /var/lib/lxc/{{container}}-container/fstab:
   file.managed:
     - user: root
     - group: root
     - source: salt://lxc-host/{{container}}-container.fstab
+    - container: {{container}}
+    - template: jinja
+    - require:
+      - cmd: create_container_{{container}}
 
 /var/lib/lxc/{{container}}-container/config:
   file.managed:
     - user: root
     - group: root
     - container: {{container}}
-    - ipaddr: {{ipaddr}}
-    - macaddr: {{ pillar['containers_macaddrs'][container] }}
+    - ipaddr: {{ pillar['containers'][container]['ip'] }}
+    - macaddr: {{ pillar['containers'][container]['mac'] }}
     - source: salt://lxc-host/lxc-config.jinja
     - template: jinja
+    - require:
+      - file: /var/lib/lxc/{{container}}-container/fstab
+
+/etc/lxc/auto/{{container}}.conf:
+  file.symlink:
+    - target: /var/lib/lxc/{{container}}-container/config
+    - require: 
+      - file: /var/lib/lxc/{{container}}-container/config
 
 {% endfor %}
 

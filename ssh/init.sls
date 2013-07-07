@@ -25,7 +25,8 @@ ssh:
      - require:
        - pkg: openssh-server
 
-{% for container, ipaddr in pillar.get('containers', {}).items() %}
+{% for container, data in pillar.get('containers').items() %}
+{% set ipaddr = data['ip'] %}
 {{container}}-container:
   host.present:
     - ip: {{ipaddr}}

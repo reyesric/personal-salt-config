@@ -24,3 +24,6 @@ base:
 
   'seafile*':
     - seafile
+
+  'rss2imap*':
+    - rss2imap
