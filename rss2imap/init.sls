@@ -5,6 +5,11 @@
 include:
   - users
 
+/var/log/rss2imap:
+  file.directory:
+    - user: ricardo
+    
+
 https://github.com/rcarmo/rss2imap.git:
   git.latest:
     - rev: master
@@ -20,3 +25,4 @@ https://github.com/rcarmo/rss2imap.git:
     - source: salt://rss2imap/cron.file
     - require:
       - git: https://github.com/rcarmo/rss2imap.git
+      - file: /var/log/rss2imap

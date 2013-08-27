@@ -21,8 +21,9 @@ subsonic-deb:
     - group: root
 
 /var/music:
-  file.directory:
-    - user: root
+  file.symlink:
+    - target: /shared/music
+    - force: true
 
 subsonic:
   service:

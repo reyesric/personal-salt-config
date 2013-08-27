@@ -25,13 +25,6 @@ ssh:
      - require:
        - pkg: openssh-server
 
-{% for container, data in pillar.get('containers').items() %}
-{% set ipaddr = data['ip'] %}
-{{container}}-container:
-  host.present:
-    - ip: {{ipaddr}}
-{% endfor %}
-
 zotac-server:
   host.present:
     - ip: 10.0.3.1

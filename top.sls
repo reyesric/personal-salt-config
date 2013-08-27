@@ -1,7 +1,4 @@
 base:
-  'web-container':
-    - webserver
-
   'torrent*':
     - pip
     - torrent
@@ -18,9 +15,8 @@ base:
     - minidlna
     - pip
     - diamond
- 
-  'subsonic*':
     - subsonic
+    - webserver
 
   'seafile*':
     - seafile
