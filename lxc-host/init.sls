@@ -31,10 +31,6 @@ byobu:
   pkg:
     - installed
 
-apt-cacher:
-  pkg:
-    - installed
-
 /media/wd500:
   file.directory:
     - user: root
