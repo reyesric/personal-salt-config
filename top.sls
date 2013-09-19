@@ -13,6 +13,7 @@ base:
     - webserver
     - pip
     - torrent
+    - fileserver
 
   'seafile*':
     - seafile
