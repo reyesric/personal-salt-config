@@ -8,12 +8,12 @@ base:
   'zotac-server':
     - minidlna
     - pip
-    - diamond
     - subsonic
     - webserver
     - pip
     - torrent
     - fileserver
+    - lxc-host
 
   'seafile*':
     - seafile

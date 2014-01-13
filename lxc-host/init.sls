@@ -31,7 +31,7 @@ byobu:
   pkg:
     - installed
 
-/media/wd500:
+/media/2tb:
   file.directory:
     - user: root
     - group: root
@@ -47,7 +47,7 @@ byobu:
     - group: root
     - source: salt://lxc-host/fstab
     - require:
-      - file: /media/wd500
+      - file: /media/2tb
       - file: /media/samsung1tera
 
 /etc/resolv.conf:
@@ -62,6 +62,12 @@ byobu:
 rsnapshot:
   pkg:
     - installed
+
+/media/2tb/rsnapshots:
+  file.directory:
+    - user: root
+    - group: root
+
 
 /etc/rsnapshot.conf:
   file.managed:
@@ -78,6 +84,7 @@ rsnapshot:
     - source: salt://lxc-host/rsnapshot.cron.d
     - require:
       - pkg: rsnapshot
+      - file: /media/2tb/rsnapshots
 
 
 
@@ -90,27 +97,3 @@ flask:
     - require:
       - pkg: python-pip
 
-https://github.com/lxc-webpanel/LXC-Web-Panel.git:
-  git.latest:
-    - rev: master
-    - target: /srv/lwp
-    - require:
-      - pkg: git-core
-      - pip: flask
-
-/etc/init.d/lwp:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://lxc-host/lwp.init.d
-    - mode: 700
-    - require:
-      - git: https://github.com/lxc-webpanel/LXC-Web-Panel.git
-
-lwp:
-  service:
-    - running
-    - enable: True
-    - sig: lwp
-    - require:
-      - file: /etc/init.d/lwp
