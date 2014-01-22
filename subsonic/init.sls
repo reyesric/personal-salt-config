@@ -27,7 +27,7 @@ subsonic-deb:
 
 subsonic:
   service:
-   - disabled
+   - running
    - watch:
      - cmd: subsonic-deb
      - file: /etc/default/subsonic

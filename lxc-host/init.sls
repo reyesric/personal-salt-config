@@ -63,7 +63,7 @@ rsnapshot:
   pkg:
     - installed
 
-/media/2tb/rsnapshots:
+/media/samsung1tera/rsnaphosts:
   file.directory:
     - user: root
     - group: root
@@ -84,7 +84,7 @@ rsnapshot:
     - source: salt://lxc-host/rsnapshot.cron.d
     - require:
       - pkg: rsnapshot
-      - file: /media/2tb/rsnapshots
+      - file: /media/samsung1tera/rsnaphosts
 
 
 

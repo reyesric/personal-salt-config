@@ -1,0 +1,9 @@
+ProxyRequests Off
+ProxyPreserveHost On
+<Proxy *>
+    Order allow,deny
+    Allow from all
+</Proxy>
+ProxyPass /subsonic/ http://localhost:4040/subsonic/
+ProxyPassReverse /subsonic/ http://localhost:4040/subsonic/
+
