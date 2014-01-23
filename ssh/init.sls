@@ -27,9 +27,22 @@ ssh:
 
 zotac-server:
   host.present:
-    - ip: 10.0.3.1
+    - ip: 127.0.0.1
     - names: 
+      - localhost
       - zotac-server
       - reyesric.homeftp.org
 
+dnsmasq:
+  pkg:
+    - installed
+  service:
+    - enable: True
+    - running
+    - require:
+      - pkg: dnsmasq
+
+/etc/dnsmasq.conf:
+  file.managed:
+    - source: salt://ssh/dnsmasq.conf
 

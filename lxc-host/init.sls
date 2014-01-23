@@ -30,6 +30,8 @@ smartmontools:
     - group: root
     - source: salt://lxc-host/ddclient.conf
     - mode: 600
+    - require:
+      - pkg: ddclient
 
 
 byobu:
