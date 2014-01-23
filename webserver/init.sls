@@ -13,14 +13,6 @@ apache2:
     - watch:
       - pkg: apache2
       - file: /etc/apache2/sites-available/subsonic
-      - cmd: a2enmod proxy_http
-
-a2enmod proxy_http:
-  cmd:
-    - run
-    - require:
-      - pkg: apache2
-
 
 /etc/apache2/sites-available/subsonic:
   file.managed:
@@ -29,4 +21,12 @@ a2enmod proxy_http:
 /etc/apache2/sites-enabled/subsonic:
   file.symlink:
     - target: /etc/apache2/sites-available/subsonic
+
+/etc/apache2/sites-available/observium:
+  file.managed:
+    - source: salt://webserver/observium.apache
+
+/etc/apache2/sites-enabled/observium:
+  file.symlink:
+    - target: /etc/apache2/sites-available/observium
 

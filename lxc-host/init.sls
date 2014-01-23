@@ -10,6 +10,11 @@ lm-sensors:
   pkg: 
     - installed
 
+/etc/sensors.d/zbox-hd-id-11:
+  file.managed:
+    - source: salt://lxc-host/sensors.d.conf
+    - mode: 644
+
 ddclient:
   pkg:
     - installed
@@ -49,15 +54,6 @@ byobu:
     - require:
       - file: /media/2tb
       - file: /media/samsung1tera
-
-/etc/resolv.conf:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://lxc-host/resolv.conf
-    - require:
-      - pkg: lxc
-
 
 rsnapshot:
   pkg:

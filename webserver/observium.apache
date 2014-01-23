@@ -1,0 +1,18 @@
+<VirtualHost *:8080>
+  DocumentRoot /opt/observium/html/
+  ServerName  reyesric.homeftp.org
+  CustomLog /opt/observium/logs/access_log combined
+  ErrorLog /opt/observium/logs/error_log
+  <Directory "/opt/observium/html/">
+    AllowOverride All
+    Options FollowSymLinks MultiViews
+  </Directory>
+</VirtualHost>
+
+ExtendedStatus On
+<Location /server-status>
+    SetHandler server-status
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1 ::1
+</Location>

@@ -14,6 +14,7 @@ base:
     - torrent
     - fileserver
     - lxc-host
+    - observium
 
   'seafile*':
     - seafile
