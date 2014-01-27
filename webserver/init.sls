@@ -13,6 +13,7 @@ apache2:
     - watch:
       - pkg: apache2
       - file: /etc/apache2/sites-available/subsonic
+      - file: /etc/apache2/conf.d/fqdn
 
 /etc/apache2/sites-available/subsonic:
   file.managed:
@@ -30,3 +31,6 @@ apache2:
   file.symlink:
     - target: /etc/apache2/sites-available/observium
 
+/etc/apache2/conf.d/fqdn:
+  file.managed:
+    - source: salt://webserver/fqdn.apache
