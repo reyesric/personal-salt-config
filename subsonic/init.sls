@@ -28,6 +28,7 @@ subsonic-deb:
 subsonic:
   service:
    - running
+   - enable: True
    - watch:
      - cmd: subsonic-deb
      - file: /etc/default/subsonic
