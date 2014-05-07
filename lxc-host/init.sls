@@ -10,6 +10,10 @@ lm-sensors:
   pkg: 
     - installed
 
+molly-guard:
+  pkg:
+    - installed
+
 /etc/sensors.d/zbox-hd-id-11:
   file.managed:
     - source: salt://lxc-host/sensors.d.conf
