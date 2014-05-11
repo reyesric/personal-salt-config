@@ -25,13 +25,6 @@ git-core:
   pkg:
     - installed
 
-https://github.com/robbyrussell/oh-my-zsh.git:
-  git.latest:
-    - rev: master
-    - target: /home/ricardo/.oh-my-zsh
-    - require:
-      - pkg: git-core
-
 /home/ricardo/.zshrc:
   file.managed:
     - user: ricardo
@@ -39,7 +32,6 @@ https://github.com/robbyrussell/oh-my-zsh.git:
     - source: salt://users/zshrc
     - require:
       - user: ricardo
-      - git: https://github.com/robbyrussell/oh-my-zsh.git
 
 /etc/sudoers.d/ricardo:
   file.managed:
