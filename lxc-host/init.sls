@@ -14,6 +14,17 @@ molly-guard:
   pkg:
     - installed
 
+usbmount:
+  pkg:
+    - installed
+
+/etc/usbmount/usbmount.conf:
+  file.managed:
+    - source: salt://lxc-host/usbmount.conf
+    - require:
+      - pkg: usbmount
+
+
 /etc/sensors.d/zbox-hd-id-11:
   file.managed:
     - source: salt://lxc-host/sensors.d.conf
