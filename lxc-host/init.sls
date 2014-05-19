@@ -96,3 +96,35 @@ flask:
     - require:
       - pkg: python-pip
 
+
+
+
+curl:
+  pkg:
+    - installed
+
+/usr/local/bin/duckdns.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://lxc-host/duckdns.sh
+    - require:
+      - pkg: curl
+
+/home/ricardo/duckdns:
+  file.directory:
+    - user: ricardo
+    - group: ricardo
+
+
+
+/etc/cron.d/duckdns:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/duckdns.cron.d
+    - require:
+      - file: /usr/local/bin/duckdns.sh
+      - file: /home/ricardo/duckdns
+
