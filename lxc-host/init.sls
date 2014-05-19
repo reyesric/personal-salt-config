@@ -30,23 +30,9 @@ usbmount:
     - source: salt://lxc-host/sensors.d.conf
     - mode: 644
 
-ddclient:
-  pkg:
-    - installed
-
 smartmontools:
   pkg:
     - installed
-
-
-/etc/ddclient.conf:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://lxc-host/ddclient.conf
-    - mode: 600
-    - require:
-      - pkg: ddclient
 
 
 byobu:
