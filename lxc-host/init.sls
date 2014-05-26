@@ -49,7 +49,7 @@ byobu:
     - user: root
     - group: root
 
-/etc/fstab:
+/etc/fstab.d/usbdrives.fstab:
   file.managed:
     - user: root
     - group: root
