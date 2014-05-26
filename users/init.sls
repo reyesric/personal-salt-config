@@ -10,6 +10,10 @@ dnsutils:
   pkg:
     - installed
 
+sudo:
+  pkg:
+    - installed
+
 ricardo:
   user.present:
     - home: /home/ricardo
