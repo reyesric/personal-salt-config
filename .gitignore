@@ -1,3 +1,4 @@
 flexget.config.yml
 ddclient.conf
 subsonic*.deb
+my.cnf
