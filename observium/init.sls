@@ -48,6 +48,10 @@ xinetd:
   file.managed:
     - source: salt://observium/observium.cron
 
+/root/.my.cnf:
+  file.managed:
+    - source: salt://observium/my.cnf
+
 /etc/xinetd.d/observium_agent:
   file.managed:
     - source: salt://observium/observium_agent_xinetd
