@@ -128,3 +128,18 @@ curl:
       - file: /usr/local/bin/duckdns.sh
       - file: /home/ricardo/duckdns
 
+/usr/local/bin/check-disk-state.py:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://lxc-host/check-disk-state.py
+    - template: jinja
+   
+/etc/cron.d/check-disk-state:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/check-disk-state.cron.d
+
+
