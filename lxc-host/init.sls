@@ -49,14 +49,15 @@ byobu:
     - user: root
     - group: root
 
-/etc/fstab.d/usbdrives.fstab:
+/etc/fstab:
   file.managed:
     - user: root
     - group: root
-    - source: salt://lxc-host/fstab
+    - source: salt://lxc-host/fstab.base
     - require:
       - file: /media/2tb
       - file: /media/samsung1tera
+
 
 rsnapshot:
   pkg:

@@ -15,6 +15,16 @@ apache2:
       - file: /etc/apache2/sites-available/subsonic
       - file: /etc/apache2/conf.d/fqdn
 
+/etc/apache2/sites-available/default:
+  file.managed:
+    - source: salt://webserver/default.apache
+
+
+/etc/apache2/sites-enabled/000-default:
+  file.symlink:
+    - target: /etc/apache2/sites-available/default
+
+
 /etc/apache2/sites-available/subsonic:
   file.managed:
     - source: salt://webserver/subsonic.apache

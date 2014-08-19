@@ -6,4 +6,6 @@ ProxyPreserveHost On
 </Proxy>
 ProxyPass /subsonic/ http://localhost:4040/subsonic/
 ProxyPassReverse /subsonic/ http://localhost:4040/subsonic/
+CustomLog /var/log/subonic_access_log combined
+ErrorLog /var/log/subsonic_error_log
 
