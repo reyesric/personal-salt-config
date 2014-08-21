@@ -29,9 +29,8 @@ zotac-server:
   host.present:
     - ip: 127.0.0.1
     - names: 
+      - chiquito.duckdns.org
       - localhost
-      - zotac-server
-      - reyesric.homeftp.org
 
 dnsmasq:
   pkg:

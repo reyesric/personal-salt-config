@@ -144,3 +144,10 @@ curl:
     - source: salt://lxc-host/check-disk-state.cron.d
 
 
+
+/etc/hdparm.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://lxc-host/hdparm.conf
+

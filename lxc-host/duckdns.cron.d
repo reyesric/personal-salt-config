@@ -1,1 +1,1 @@
-*/5 * * * * ricardo  /usr/local/bin/duckdns.sh >/dev/null 2>&1
+*/15 * * * * ricardo  /usr/local/bin/duckdns.sh >/dev/null 2>&1

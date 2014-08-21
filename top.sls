@@ -4,8 +4,6 @@ base:
     - users
     - base
     - postfix
-
-  'zotac-server':
     - minidlna
     - pip
     - subsonic
