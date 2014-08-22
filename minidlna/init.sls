@@ -1,9 +1,14 @@
 minidlna:
+  pkg:
+    - installed
   service:
     - running
+    - requires:
+      - pkg: minidlna
     - watch:
       - file: /etc/minidlna.conf
       - file: /var/cache/minidlna
+
 
 /var/cache/minidlna:
   file.directory:
