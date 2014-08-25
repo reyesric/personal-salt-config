@@ -38,5 +38,13 @@
         Allow from 127.0.0.0/255.0.0.0 ::1/128
     </Directory>
 
+ <Location "/server-status">
+        SetHandler server-status
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Location>
+
 </VirtualHost>
 

@@ -3,7 +3,7 @@ collectd:
     - installed
   service:
     - running
-    - enabled: True
+    - enable: True
     - watch:
       - file: /etc/collectd/collectd.conf
 
