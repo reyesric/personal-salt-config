@@ -1,5 +1,6 @@
 base:
   '*':
+    - lxc-host
     - ssh
     - users
     - base
@@ -11,8 +12,8 @@ base:
     - pip
     - torrent
     - fileserver
-    - lxc-host
     - collectd
+    - observium
 
   'seafile*':
     - seafile

@@ -20,7 +20,7 @@
     "encryption": 1, 
     "idle-seeding-limit": 30, 
     "idle-seeding-limit-enabled": true, 
-    "incomplete-dir": "/srv/torrents/incomplete", 
+    "incomplete-dir": "/srv/torrents-incomplete", 
     "incomplete-dir-enabled": true, 
     "lazy-bitfield-enabled": true, 
     "lpd-enabled": false, 
@@ -69,6 +69,6 @@
     "upload-limit-enabled": 1, 
     "upload-slots-per-torrent": 14, 
     "utp-enabled": true, 
-    "watch-dir": "/srv/torrents/incomplete", 
+    "watch-dir": "/srv/torrents-incomplete", 
     "watch-dir-enabled": true
 }

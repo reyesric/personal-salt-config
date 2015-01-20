@@ -28,7 +28,7 @@ python-transmissionrpc:
   file.directory:
     - user: debian-transmission
 
-/srv/torrents/incomplete:
+/srv/torrents-incomplete:
   file.directory:
     - user: debian-transmission
     - require:

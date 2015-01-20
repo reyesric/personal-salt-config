@@ -1,7 +1,3 @@
-lxc:
-  pkg:
-    - installed
-
 iptables-persistent:
   pkg:
     - installed
