@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone=ânoâ?>
+ DOCTYPE service-group SYSTEM "avahi-service.dtd">
+ <service-group>
+ <name replace-wildcards="yes">%h</name>
+ <service>
+ <type>_adisk._tcp</type>
+ <port>9</port>
+ sys=waMA=00:01:2e:bc:3c:e1,adVF=0Ã100
+ <txt-record>dk0=adVF=0xa1,adVN=TimeMachine,adVU=c9255b48-3004-42d2-b028-919df91d417d</txt-record>
+ <txt-record>dk1=adVN=media,adVU=fa00f53a-94ad-49b9-b8a2-5abdd433f658</txt-record>
+ <txt-record>dk2=adVN=software,adVU=6ce0d50a-afa6-4a23-a365-dbc252ea4622</txt-record>
+ </service>
+ </service-group>
