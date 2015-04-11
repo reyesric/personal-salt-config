@@ -126,5 +126,8 @@ curl:
       - file: /home/ricardo/duckdns
 
 
-
+cron-apt:
+  pkg:
+    - installed
+  
 

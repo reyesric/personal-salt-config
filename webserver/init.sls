@@ -44,3 +44,19 @@ apache2:
 /etc/apache2/conf.d/fqdn.conf:
   file.managed:
     - source: salt://webserver/fqdn.apache
+
+
+
+cli53:
+  pip:
+    - installed
+   
+/etc/cron.hourly/r53dyndns:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://webserver/r53dyndns.py
+    - require:
+      - pip: cli53
+

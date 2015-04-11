@@ -12,7 +12,6 @@ base:
     - pip
     - torrent
     - fileserver
-    - collectd
     - observium
 
   'seafile*':

@@ -1,11 +1,16 @@
-ProxyRequests Off
-ProxyPreserveHost On
-<Proxy *>
-    Order allow,deny
-    Allow from all
-</Proxy>
-ProxyPass /subsonic/ http://localhost:4040/subsonic/
-ProxyPassReverse /subsonic/ http://localhost:4040/subsonic/
-CustomLog /var/log/subonic_access_log combined
-ErrorLog /var/log/subsonic_error_log
+<VirtualHost *:80>
+	ServerName subsonic.nixer.info
+	ServerAlias subsonic
+	ServerSignature Off
 
+	ProxyRequests Off
+	ProxyPreserveHost On
+	<Proxy *>
+	    Order allow,deny
+	    Allow from all
+	</Proxy>
+	ProxyPass / http://localhost:4040/
+	ProxyPassReverse / http://localhost:4040/
+	CustomLog /var/log/subonic_access_log combined
+	ErrorLog /var/log/subsonic_error_log
+</VirtualHost>

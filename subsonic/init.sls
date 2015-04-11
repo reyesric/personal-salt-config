@@ -12,7 +12,7 @@ subsonic-deb:
 
 /tmp/subsonic.deb:
   file.managed:
-    - source: salt://subsonic/subsonic-5.0.deb
+    - source: salt://subsonic/subsonic-5.2.deb
 
 /etc/default/subsonic:
   file.managed:

@@ -88,3 +88,4 @@ UsePAM yes
 
 ClientAliveInterval 60
 
+UseDNS no

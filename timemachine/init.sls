@@ -1,3 +1,5 @@
+# based on https://www.64bit.co.uk/ubuntu-as-a-osx-time-machine/
+
 netatalk:
   pkg:
     - installed

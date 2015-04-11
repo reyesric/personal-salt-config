@@ -1,6 +1,6 @@
-<VirtualHost *:8080>
+<VirtualHost *:80>
   DocumentRoot /opt/observium/html/
-  ServerName  chiquito.duckdns.org
+  ServerName  observium.nixer.info
   CustomLog /opt/observium/logs/access_log combined
   ErrorLog /opt/observium/logs/error_log
   <Directory "/opt/observium/html/">
