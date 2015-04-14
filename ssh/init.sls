@@ -25,13 +25,16 @@ ssh:
      - require:
        - pkg: openssh-server
 
-zotac-server:
+localhost:
   host.present:
     - ip: 127.0.0.1
+
+nixer.info:
+ host.present:
+    - ip: 127.0.1.1
     - names: 
-      - nixer.info
-      - chiquito.duckdns.org
-      - localhost
+      - nixer
+      - zotac
 
 dnsmasq:
   pkg:
