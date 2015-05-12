@@ -12,6 +12,7 @@
 # line of that file to be used as the name.  The Debian default
 # is /etc/mailname.
 #myorigin = /etc/mailname
+inet_protocols = ipv4
 
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
@@ -47,11 +48,7 @@ smtpd_tls_security_level = may
 myhostname = {{ grains['host'] }}
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-{% if grains['fqdn'] != grains['host'] %}
-mydestination = {{ grains['fqdn']}}, {{ grains['host'] }}, localhost.localdomain, localhost
-{% else %}
-mydestination = {{ grains['host'] }}, localhost.localdomain, localhost
-{% endif %}
+mydestination = nixer, nixer.info localhost.localdomain, localhost
 
 relayhost = {{smtp_server}}
 

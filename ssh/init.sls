@@ -16,6 +16,20 @@ ssh:
        - pkg: openssh-server
        - file: /etc/ssh/sshd_config
 
+/etc/network/interfaces:
+   file.managed:
+     - user: root
+     - group: root
+     - mode: 644
+     - source: salt://ssh/interfaces
+     
+/etc/resolv.conf:
+   file.managed:
+     - user: root
+     - group: root
+     - mode: 644
+     - source: salt://ssh/resolv.conf
+
 /etc/ssh/sshd_config:
    file.managed:
      - user: root
@@ -35,17 +49,5 @@ nixer.info:
     - names: 
       - nixer
       - zotac
-
-dnsmasq:
-  pkg:
-    - installed
-  service:
-    - enable: True
-    - running
-    - require:
-      - pkg: dnsmasq
-
-/etc/dnsmasq.conf:
-  file.managed:
-    - source: salt://ssh/dnsmasq.conf
+      - nixer.info
 

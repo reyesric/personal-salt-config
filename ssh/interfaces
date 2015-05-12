@@ -1,0 +1,12 @@
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+   address 172.16.1.101
+   network 172.16.0.0
+   netmask 255.255.255.0
+   broadcast 172.16.0.255
+   gateway 172.16.1.1
+   dns-nameservers 172.16.1.1 8.8.8.8 8.8.4.4
+

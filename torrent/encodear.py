@@ -14,7 +14,6 @@ parser.add_argument('-f', '--force', action='store_true', help='Sobreescribir el
 parser.add_argument('-e', '--encoding', default='latin1', help='Encoding del archivo de subtitulos (latin1 por default)')
 args = parser.parse_args()
 
-
 if os.path.splitext(args.subtitulos)[-1].lower() != '.srt':
   raise ValueError ('El archivo de subtitulos no parece un archivo valido')
 
@@ -30,13 +29,13 @@ assert(os.path.splitext(args.output)[-1].lower() == '.avi')
 
 tmp = tempfile().strip()
 try:
-  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=1', '-sub', args.subtitulos, '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', '/dev/null', '-quiet', _iter=True):
+  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=1', '-sub', args.subtitulos.decode('latin1'), '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', '/dev/null', '-quiet', _iter=True):
     print line.strip()
 
-  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=2', '-sub', args.subtitulos, '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', args.output, '-quiet', _iter=True):
+  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=2', '-sub', args.subtitulos.decode('latin1'), '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', args.output, '-quiet', _iter=True):
     print line.strip()
 
-  mail ('-s', "encode de %s terminado" % args.output, 'chiquito@gmail.com', _in='Proceso terminado')
+  mail ('-s', "encode de %s terminado" % os.path.basename(args.output), 'chiquito@gmail.com', _in='Proceso terminado')
 finally:
   os.remove (tmp)
 
