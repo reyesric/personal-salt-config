@@ -1,39 +1,6 @@
 include:
   - pip
 
-transmission-daemon:
-  pkg:
-    - installed
-  service:
-    - running
-    - enable: true
-    - reload: true
-    - watch:
-      - pkg: transmission-daemon
-      - file: /etc/transmission-daemon/settings.json
-
-python-transmissionrpc:
-  pkg:
-    - installed
-    - require:
-      - pkg: transmission-daemon
-
-/etc/transmission-daemon/settings.json:
-  file.managed:
-    - source: salt://torrent/settings.json
-    - user: debian-transmission
-    - group: debian-transmission
-
-/srv/torrents:
-  file.directory:
-    - user: debian-transmission
-
-/srv/torrents-incomplete:
-  file.directory:
-    - user: debian-transmission
-    - require:
-      - file: /srv/torrents
-
 flexget:
   pip.installed:
     - require:
@@ -73,3 +40,17 @@ mencoder:
     - source: salt://torrent/encodear.py
     - require:
       - pkg: mencoder
+
+/usr/local/bin/waiton:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://torrent/waiton
+
+/usr/local/bin/online:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://torrent/online.py

@@ -3,8 +3,9 @@
 from sh import nice
 import argparse
 import os.path, os
-from sh import tempfile
+from sh import mktemp
 from sh import mail
+import shutil
 
 parser = argparse.ArgumentParser (description='Genera un AVI con subtitulos incluidos')
 parser.add_argument('video', help='Video original')
@@ -27,17 +28,23 @@ if os.path.exists(args.output):
 
 assert(os.path.splitext(args.output)[-1].lower() == '.avi')
 
-tmp = tempfile().strip()
+tmp = mktemp().strip()
+tmp_avi = mktemp('--tmpdir=/var/tmp').strip()
 try:
   for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=1', '-sub', args.subtitulos.decode('latin1'), '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', '/dev/null', '-quiet', _iter=True):
     print line.strip()
 
-  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=2', '-sub', args.subtitulos.decode('latin1'), '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', args.output, '-quiet', _iter=True):
+  for line in nice.mencoder(args.video, '-oac', 'mp3lame', '-ovc', 'xvid', '-vf', 'scale', '-zoom', '-xy', 720, '-xvidencopts', 'bitrate=1500:me_quality=6:threads=2:pass=2', '-sub', args.subtitulos.decode('latin1'), '-subfont-text-scale', 2.8, '-subcp', args.encoding, '-subpos', 85, '-passlogfile', tmp, '-o', tmp_avi, '-quiet', _iter=True):
     print line.strip()
+    
+  shutil.move (tmp_avi, args.output)
 
   mail ('-s', "encode de %s terminado" % os.path.basename(args.output), 'chiquito@gmail.com', _in='Proceso terminado')
 finally:
-  os.remove (tmp)
+  if os.path.exists(tmp):
+    os.remove (tmp)
+  if os.path.exists(tmp_avi):
+    os.remove (tmp_avi)
 
 
 

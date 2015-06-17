@@ -17,3 +17,10 @@ tmpfs /tmp     tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/log tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
 
+#ReadyNAS
+172.16.1.103:/data/Music /media/Music nfs _netdev,auto 0 0
+172.16.1.103:/data/Rsnapshots /media/rsnapshots nfs _netdev,auto 0 0
+172.16.1.103:/data/crashplan /media/crashplan nfs _netdev,auto 0 0
+172.16.1.103:/data/Transmission/Downloads /media/torrents nfs _netdev,auto 0 0
+172.16.1.103:/data/Pictures /media/Pictures nfs _netdev,auto 0 0
+172.16.1.103:/data/Videos /media/Videos nfs _netdev,auto 0 0

@@ -5,7 +5,6 @@ base:
     - users
     - base
     - postfix
-    - minidlna
     - pip
     - subsonic
     - webserver

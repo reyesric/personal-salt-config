@@ -1,1 +1,1 @@
-@reboot  ricardo  /usr/local/bin/flexget daemon start -d
+@hourly  ricardo  /usr/local/bin/online && /usr/local/bin/flexget --cron execute
